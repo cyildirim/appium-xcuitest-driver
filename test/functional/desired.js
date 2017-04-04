@@ -31,7 +31,7 @@ const GENERIC_CAPS = {
   deviceName: DEVICE_NAME,
   automationName: 'XCUITest',
   noReset: true,
-  maxTypingFrequency: 30,
+  // maxTypingFrequency: 30,
 };
 
 let simUICatalogApp = path.resolve('.', 'node_modules', 'ios-uicatalog', uiCatalogApp[1]);

@@ -133,6 +133,33 @@ describe('XCUITestDriver - element(s)', function () {
         await driver.back();
       });
 
+      describe.only('breakables', function () { // eslint-disable-line
+        let text1 = 'bunchoftext';
+        let secureText = _.map(new Array(text1.length), () => '•').join('');
+        this.timeout(0);
+        it('should break', async () => {
+          let el = await driver.elementByClassName('XCUIElementTypeTextField');
+          for (let i = 0; i < 300; i++) {
+            await el.type(text1);
+
+            let text = await el.text();
+            text.should.include(text1);
+
+            await el.clear();
+          }
+        });
+
+        it('should type in a secure text field', async () => {
+          let els = await driver.elementsByClassName('XCUIElementTypeSecureTextField');
+          await els[0].type(text1);
+
+          let text = await els[0].text();
+          text.should.not.eql(text1);
+          text.length.should.eql(text1.length);
+          text.should.eql(secureText);
+        });
+      });
+
       describe('set value', () => {
         it('should type in the text field', async () => {
           let el = await driver.elementByClassName('XCUIElementTypeTextField');
