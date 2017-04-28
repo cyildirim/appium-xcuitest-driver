@@ -1,14 +1,14 @@
-import { startServer } from '../../..';
+import { startServer } from '../../../..';
 import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
 import wd from 'wd';
 import _ from 'lodash';
 import B from 'bluebird';
 import { killAllSimulators } from 'appium-ios-simulator';
-import { HOST, PORT, MOCHA_TIMEOUT } from '../helpers/session';
-import { SAFARI_CAPS } from '../desired';
+import { HOST, PORT, MOCHA_TIMEOUT } from '../../helpers/session';
+import { SAFARI_CAPS } from '../../desired';
 import { spinTitle, spinTitleEquals, spinWait, GUINEA_PIG_PAGE,
-         PHISHING_END_POINT } from './helpers';
+         PHISHING_END_POINT } from './../helpers';
 
 
 chai.should();
